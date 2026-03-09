@@ -12,19 +12,17 @@ export function Hero() {
     return (
         <section className="relative w-full min-h-[100svh] flex items-center justify-center bg-[#0a0a0a] overflow-hidden pt-16 md:pt-20 pb-4">
 
-            {/* Background Image Area (Model on Right Side) */}
+            {/* Background Image Area - Image covers the entire section as requested */}
             <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
-                {/* Desktop layout: force image to the right with object-position.
-                    We bypass RTL here so the woman is ALWAYS on the right like the reference image */}
                 <Image
                     src="/images/hero_portrait_v35.png"
                     alt="Premium Dental Patient Portrait"
                     fill
                     priority
-                    className="object-cover object-[center_top] md:object-[65%_10%] opacity-90 mix-blend-screen grayscale contrast-[1.25] brightness-90"
+                    className="object-cover object-center md:object-[center_top] opacity-100 mix-blend-screen grayscale contrast-[1.15] brightness-90"
                 />
-                {/* Horizontal Gradient for Text Readability - forced to LEFT side to match image */}
-                <div className="absolute inset-y-0 left-0 w-full md:w-[65%] lg:w-[60%] bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent z-10" />
+                {/* Subtle dark overlay for mobile to ensure text readability without casting half-shadows on her face */}
+                <div className="absolute inset-0 bg-black/40 sm:bg-black/20 pointer-events-none z-10" />
             </div>
 
             {/* Inner Border Box framing (like Behance ref) */}
@@ -39,39 +37,40 @@ export function Hero() {
                     </div>
 
                     {/* Main Content inside Box - Vertically Centered */}
-                    <div className="flex flex-col justify-center h-full w-full z-30 relative pt-8 md:pt-12 pb-24 md:pb-12">
+                    <div className="flex flex-col justify-center h-full w-full z-30 relative pt-20 md:pt-12 pb-28 md:pb-12 pointer-events-none">
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="text-[12vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[6.5rem] xl:text-[7.5rem] font-bold leading-[0.85] tracking-[-0.04em] text-white flex flex-col text-left rtl:text-right relative w-full z-40"
+                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[6.5rem] lg:text-[7.5rem] xl:text-[9rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right mt-auto md:mt-0 relative w-full z-40"
                         >
+                            {/* Hebrew and Arabic ONLY, properly formatting to wrap the face on desktop, and stacking centrally on mobile */}
                             {locale === 'he' ? (
-                                <span dir="rtl" className="flex flex-col items-start w-full drop-shadow-2xl">
-                                    <span className="pr-0 whitespace-nowrap">כי החיוך שלך</span>
-                                    <span className="pr-[18%] opacity-90 whitespace-nowrap">ראוי</span>
-                                    <span className="pr-[5%] opacity-100 whitespace-nowrap">להכי טוב</span>
+                                <span dir="rtl" className="flex flex-col items-center md:items-start w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] md:drop-shadow-2xl gap-2 md:gap-0">
+                                    <span className="pr-0 md:pr-0 md:whitespace-nowrap">כי החיוך שלך</span>
+                                    <span className="pr-0 md:pr-[22%] opacity-90 md:whitespace-nowrap">ראוי</span>
+                                    <span className="pr-0 md:pr-[5%] opacity-100 md:whitespace-nowrap">להכי טוב</span>
                                 </span>
                             ) : (
-                                <span dir="ltr" className="flex flex-col items-start w-full drop-shadow-2xl mix-blend-normal">
-                                    <span className="pl-0 whitespace-nowrap">Because your smile</span>
-                                    <span className="pl-[18%] opacity-90 whitespace-nowrap">deserves</span>
-                                    <span className="pl-[5%] opacity-100 whitespace-nowrap">the Best</span>
+                                <span dir="rtl" className="flex flex-col items-center md:items-start w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] md:drop-shadow-2xl gap-2 md:gap-0">
+                                    <span className="pr-0 md:pr-0 md:whitespace-nowrap">لأن ابتسامتك</span>
+                                    <span className="pr-0 md:pr-[22%] opacity-90 md:whitespace-nowrap">تستحق</span>
+                                    <span className="pr-0 md:pr-[5%] opacity-100 md:whitespace-nowrap">الأفضل</span>
                                 </span>
                             )}
                         </motion.h1>
 
-                        {/* Smaller paragraph - positioned right side, vertically aligned near the mouth/smile like reference */}
+                        {/* Smaller paragraph - positioned naturally on mobile, absolute on desktop near the face */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className={`text-[10px] md:text-xs lg:text-sm font-light text-white/80 md:text-white/60 max-w-[200px] md:max-w-[280px] leading-relaxed absolute ${locale === 'he' || locale === 'ar' ? 'left-0 text-right' : 'right-0 text-left'} top-[60%] lg:top-[55%] transform -translate-y-1/2 drop-shadow-md z-40`}
+                            className={`mt-6 md:mt-0 text-[11px] sm:text-xs md:text-sm font-light text-white/90 md:text-white/60 w-full max-w-[280px] md:max-w-[280px] leading-relaxed relative md:absolute ${locale === 'he' || locale === 'ar' ? 'mx-auto md:mx-0 md:left-4 lg:left-12 xl:left-24 text-center md:text-right' : 'mx-auto md:mx-0 md:right-4 lg:right-12 xl:right-24 text-center md:text-left'} md:top-[60%] lg:top-[55%] md:transform md:-translate-y-1/2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] z-40`}
                             dir={locale === 'he' ? 'rtl' : locale === 'ar' ? 'rtl' : 'ltr'}
                         >
                             {locale === 'he'
                                 ? 'אנו מרפאת שיניים מודרנית, דיגיטלית וחדשנית. מתמקדים במתן טיפולים בטוחים ויעילים בטכנולוגיה החדישה ביותר.'
-                                : 'We are a modern, digital and innovative dental clinic. focused on providing safe and effective treatments with the latest technology.'}
+                                : 'نحن عيادة أسنان حديثة ورقمية ومبتكرة. نركز على تقديم علاجات آمنة وفعالة بأحدث التقنيات.'}
                         </motion.p>
                     </div>
 
