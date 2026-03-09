@@ -21,6 +21,8 @@ export function Hero() {
                     alt="Premium Dental Patient Portrait"
                     fill
                     priority
+                    quality={100}
+                    unoptimized
                     className="object-cover object-[center_top] md:object-[65%_10%] opacity-90 mix-blend-screen grayscale contrast-[1.25] brightness-90"
                 />
                 {/* Horizontal Gradient for Text Readability - forced to LEFT side to match image */}
