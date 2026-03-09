@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Susan Signature Smile - Premium Dental Clinic
 
-## Getting Started
+## Architecture & Tech Stack
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (v4) with `shadcn/ui` based approach
+- **i18n:** `next-intl` (Hebrew and Arabic support, both RTL configured)
+- **Animations:** Framer Motion (for refined scroll reveals)
+- **Database/RAG:** Supabase (pgvector) seed prepared in `supabase` folder.
 
-First, run the development server:
-
+## Key Instructions
+### 1. Running Locally
+Ensure you have Node.js 20+ installed.
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Localization
+The project defaults to Hebrew (`/he`) and has a toggle for Arabic (`/ar`). You can edit the dictionaries in `messages/he.json` and `messages/ar.json`. RTL directions are automatically managed in the root layout file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Updating Content
+- Text for homepage sections can be edited in the React components under `src/components/home/`.
+- To swap the generated placeholder images (`hero_portrait.png`, `dental_chair.png`, `diagnostic_machine.png`, `team_portrait.png`, `gloved_hand.png`), replace them in the `public/images/` directory.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Supabase RAG AI Chatbot
+The AI Assistant widget logic is wired up to a Next.js API route (`src/app/api/chat/route.ts`).
+To implement the backend vector search:
+1. Run `supabase/schema.sql` and `supabase/seed.sql` on your Supabase Postgres database.
+2. Initialize the OpenAI client in the API route.
+3. Modify the placeholder JSON response to return real embeddings.
 
-## Learn More
+### 5. SEO & Accessibility
+Basic Meta Tags and Open Graph setups have been written in `src/lib/seo.ts` and loaded by the main layout. An accessibility floating widget was built into the chat bubble space which handles basic UI modifications like textual toggles. 
 
-To learn more about Next.js, take a look at the following resources:
+## Quality Assurance Checklist Status
+- [x] **Mobile First Build**: Tested 375px width via Tailwind breakpoints.
+- [x] **Monochrome Luxury UI**: Dark themed aesthetic, clean grid-based spacing.
+- [x] **RTL Configuration**: CSS logical properties (`start-0`, `ltr:`, `rtl:`) implemented.
+- [x] **Forms**: A booking skeleton form connects seamlessly to the dark footer CTA.
+- [x] **A11y/Accessibility**: Built with accessible contrast ratios, visible semantic focus flows, and an A11y toggle boilerplate menu. 
+- [x] **SEO**: Integrated global metadata mappings.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Next Steps
+- Link the actual clinic WhatsApp number to the `final-cta` links.
+- Create real endpoints for form submissions (e.g. Supabase inserts or SendGrid).
