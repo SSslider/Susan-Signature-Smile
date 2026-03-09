@@ -39,24 +39,24 @@ export function Hero() {
                     </div>
 
                     {/* Main Content inside Box - Vertically Centered */}
-                    <div className="flex flex-col justify-center h-full gap-4 md:gap-8 w-full md:w-[60%] z-30 relative pt-8 md:pt-12 pb-24 md:pb-12">
+                    <div className="flex flex-col justify-center h-full w-full z-30 relative pt-8 md:pt-12 pb-24 md:pb-12">
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="text-[14vw] sm:text-[12vw] md:text-[5.5rem] lg:text-[7.5rem] font-bold leading-[0.85] tracking-[-0.04em] text-white flex flex-col text-left rtl:text-right md:text-left pl-4 rtl:pl-0 rtl:pr-4 md:pl-0 md:rtl:pr-0 relative z-40"
+                            className="text-[12vw] sm:text-[10vw] md:text-[5.5rem] lg:text-[6.5rem] xl:text-[7.5rem] font-bold leading-[0.85] tracking-[-0.04em] text-white flex flex-col text-left rtl:text-right relative w-full z-40"
                         >
                             {locale === 'he' ? (
-                                <span dir="rtl" className="flex flex-col items-start w-full drop-shadow-lg relative -left-[5%] md:left-0">
+                                <span dir="rtl" className="flex flex-col items-start w-full drop-shadow-2xl">
                                     <span className="pr-0 whitespace-nowrap">כי החיוך שלך</span>
-                                    <span className="pr-[15%] md:pr-[20%] opacity-90 whitespace-nowrap">ראוי</span>
-                                    <span className="pr-[0%] md:pr-[5%] opacity-100 whitespace-nowrap">להכי טוב</span>
+                                    <span className="pr-[18%] opacity-90 whitespace-nowrap">ראוי</span>
+                                    <span className="pr-[5%] opacity-100 whitespace-nowrap">להכי טוב</span>
                                 </span>
                             ) : (
-                                <span dir="ltr" className="flex flex-col items-start w-[110%] md:w-full drop-shadow-2xl relative md:left-0 mix-blend-normal">
+                                <span dir="ltr" className="flex flex-col items-start w-full drop-shadow-2xl mix-blend-normal">
                                     <span className="pl-0 whitespace-nowrap">Because your smile</span>
-                                    <span className="pl-[15%] md:pl-[20%] opacity-90 whitespace-nowrap">deserves</span>
-                                    <span className="pl-[5%] md:pl-[5%] opacity-100 whitespace-nowrap">the Best</span>
+                                    <span className="pl-[18%] opacity-90 whitespace-nowrap">deserves</span>
+                                    <span className="pl-[5%] opacity-100 whitespace-nowrap">the Best</span>
                                 </span>
                             )}
                         </motion.h1>
@@ -66,7 +66,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className={`text-[10px] md:text-sm font-light text-white/80 md:text-white/60 max-w-[200px] md:max-w-[280px] leading-relaxed absolute right-4 md:right-12 lg:right-24 top-[65%] md:top-[60%] lg:top-[55%] transform -translate-y-1/2 drop-shadow-md z-40`}
+                            className={`text-[10px] md:text-xs lg:text-sm font-light text-white/80 md:text-white/60 max-w-[200px] md:max-w-[280px] leading-relaxed absolute ${locale === 'he' || locale === 'ar' ? 'left-0 text-right' : 'right-0 text-left'} top-[60%] lg:top-[55%] transform -translate-y-1/2 drop-shadow-md z-40`}
                             dir={locale === 'he' ? 'rtl' : locale === 'ar' ? 'rtl' : 'ltr'}
                         >
                             {locale === 'he'
