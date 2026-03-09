@@ -17,7 +17,7 @@ export function Hero() {
                 {/* Desktop layout: force image to the right with object-position.
                     We bypass RTL here so the woman is ALWAYS on the right like the reference image */}
                 <Image
-                    src="/images/hero_portrait_v10.jpg"
+                    src="/images/hero_portrait_v11.png"
                     alt="Premium Dental Patient Portrait"
                     fill
                     priority
