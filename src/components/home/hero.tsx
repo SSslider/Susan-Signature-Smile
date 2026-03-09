@@ -10,7 +10,7 @@ export function Hero() {
     const locale = useLocale();
 
     return (
-        <section className="relative w-full min-h-[100svh] flex items-center justify-center bg-[#0a0a0a] overflow-hidden pt-20 pb-4">
+        <section className="relative w-full min-h-[100svh] flex items-center justify-center bg-[#0a0a0a] overflow-hidden pt-16 md:pt-20 pb-4">
 
             {/* Background Image Area (Model on Right Side) */}
             <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
@@ -30,7 +30,7 @@ export function Hero() {
             {/* Inner Border Box framing (like Behance ref) */}
             <div className="container mx-auto px-4 md:px-8 h-full flex flex-col justify-center relative z-20 w-full" dir="ltr">
 
-                <div className="relative w-full h-[calc(100svh-6rem)] md:h-[calc(100svh-8rem)] mt-20 md:mt-12 flex flex-col border border-white/20 p-4 sm:p-6 md:p-12 lg:p-16 rounded-sm">
+                <div className="relative w-full h-[calc(100svh-5rem)] md:h-[calc(100svh-8rem)] mt-2 sm:mt-4 md:mt-12 flex flex-col border border-white/20 p-4 sm:p-6 md:p-12 lg:p-16 rounded-sm">
 
                     {/* Top small text inside the box */}
                     <div className="flex justify-between items-center w-full text-white/50 text-[10px] sm:text-xs tracking-widest uppercase absolute top-4 sm:top-6 md:top-12 left-4 sm:left-6 md:left-12 right-4 sm:right-6 md:right-12 z-30">
