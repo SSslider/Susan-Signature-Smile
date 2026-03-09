@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { useLocale } from 'next-intl';
 
 export function Footer() {
+    const locale = useLocale();
+    const basePath = locale === 'he' ? '' : `/${locale}`;
     return (
         <footer className="bg-black text-white py-16 md:py-24 border-t border-white/5">
             <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -46,8 +49,8 @@ export function Footer() {
             <div className="container mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 gap-4">
                 <p>&copy; {new Date().getFullYear()} Susan Signature Smile. כל הזכויות שמורות.</p>
                 <div className="flex items-center gap-6">
-                    <Link href="/accessibility" className="hover:text-white transition-colors">הצהרת נגישות</Link>
-                    <Link href="/privacy" className="hover:text-white transition-colors">תנאי שימוש ופרטיות</Link>
+                    <Link href={`${basePath}/accessibility`} className="hover:text-white transition-colors">{locale === 'he' ? 'הצהרת נגישות' : 'بيان إمكانية الوصول'}</Link>
+                    <Link href={`${basePath}/privacy`} className="hover:text-white transition-colors">{locale === 'he' ? 'תנאי שימוש ופרטיות' : 'شروط الاستخدام والخصوصية'}</Link>
                 </div>
             </div>
         </footer>

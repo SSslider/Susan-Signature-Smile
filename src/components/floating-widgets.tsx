@@ -148,103 +148,54 @@ export function FloatingWidgets() {
     ];
 
     return (
-        <div className="fixed bottom-6 end-6 z-50 flex flex-col gap-4 items-end">
-
-            {/* A11y Menu Example */}
-            <AnimatePresence>
-                {a11yMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="bg-background border border-border shadow-2xl p-6 rounded-2xl w-[320px] md:w-[350px] mb-2"
-                    >
-                        <div className="flex justify-between items-center mb-6">
-                            <div className="flex items-center gap-2">
-                                <Accessibility className="w-5 h-5" />
-                                <h3 className="font-semibold">{locale === 'he' ? 'תפריט נגישות' : 'إعدادات الوصول'}</h3>
+        <>
+            {/* Accessibility Widget - Right side (start in RTL) */}
+            <div className="fixed bottom-6 start-6 z-50 flex flex-col gap-4 items-start">
+                <AnimatePresence>
+                    {a11yMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="bg-background border border-border shadow-2xl p-6 rounded-2xl w-[320px] md:w-[350px] mb-2 origin-bottom-left"
+                        >
+                            <div className="flex justify-between items-center mb-6">
+                                <div className="flex items-center gap-2">
+                                    <Accessibility className="w-5 h-5" />
+                                    <h3 className="font-semibold">{locale === 'he' ? 'תפריט נגישות' : 'إعدادات الوصول'}</h3>
+                                </div>
+                                <button onClick={() => setA11yMenuOpen(false)}><X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" /></button>
                             </div>
-                            <button onClick={() => setA11yMenuOpen(false)}><X className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" /></button>
-                        </div>
 
-                        <div className="grid grid-cols-2 gap-2 text-sm text-foreground/80 mb-6">
-                            {a11yOptions.map(opt => (
+                            <div className="grid grid-cols-2 gap-2 text-sm text-foreground/80 mb-6">
+                                {a11yOptions.map(opt => (
+                                    <button
+                                        key={opt.id}
+                                        onClick={opt.action}
+                                        className={`flex flex-col items-center justify-center gap-2 p-3 border rounded-xl transition-colors text-center ${opt.active ? 'bg-blue-600 text-white border-blue-600' : 'hover:bg-muted border-border'}`}
+                                    >
+                                        {opt.icon}
+                                        <span className="text-xs leading-tight">{opt.label}</span>
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="flex items-center justify-between pt-4 border-t border-border">
                                 <button
-                                    key={opt.id}
-                                    onClick={opt.action}
-                                    className={`flex flex-col items-center justify-center gap-2 p-3 border rounded-xl transition-colors text-center ${opt.active ? 'bg-blue-600 text-white border-blue-600' : 'hover:bg-muted border-border'}`}
+                                    onClick={() => setA11ySettings({ fontSize: 100, highContrast: false, lightMode: false, highlightLinks: false, highlightTitles: false, readableFont: false, dyslexicFont: false, stopAnimations: false, largeCursor: false })}
+                                    className="flex items-center gap-2 text-xs font-medium text-destructive hover:text-destructive/80 transition-colors"
                                 >
-                                    {opt.icon}
-                                    <span className="text-xs leading-tight">{opt.label}</span>
+                                    <RotateCcw className="w-3 h-3" />
+                                    {locale === 'he' ? 'אפס הגדרות' : 'إعادة تعيين'}
                                 </button>
-                            ))}
-                        </div>
-
-                        <div className="flex items-center justify-between pt-4 border-t border-border">
-                            <button
-                                onClick={() => setA11ySettings({ fontSize: 100, highContrast: false, lightMode: false, highlightLinks: false, highlightTitles: false, readableFont: false, dyslexicFont: false, stopAnimations: false, largeCursor: false })}
-                                className="flex items-center gap-2 text-xs font-medium text-destructive hover:text-destructive/80 transition-colors"
-                            >
-                                <RotateCcw className="w-3 h-3" />
-                                {locale === 'he' ? 'אפס הגדרות' : 'إعادة تعيين'}
-                            </button>
-                            <a href="/accessibility" className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4">
-                                {locale === 'he' ? 'הצהרת נגישות' : 'بيان الوصول'}
-                            </a>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Chat Window */}
-            <AnimatePresence>
-                {isChatOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="bg-background border border-border shadow-2xl rounded-2xl w-[340px] md:w-[400px] h-[550px] mb-2 flex flex-col overflow-hidden"
-                    >
-                        {/* Header */}
-                        <div className="bg-foreground text-background p-5 flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center font-bold text-lg">L</div>
-                                <div>
-                                    <h3 className="font-semibold leading-tight">{locale === 'he' ? 'לין - אסיסטנטית חכמה' : 'لين - مساعدة'}</h3>
-                                    <p className="text-xs opacity-70 mt-0.5">{locale === 'he' ? 'זמינה 24/7' : 'متاح 24/7'}</p>
-                                </div>
+                                <a href={locale === 'he' ? '/accessibility' : `/${locale}/accessibility`} className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4">
+                                    {locale === 'he' ? 'הצהרת נגישות' : 'بيان إمكانية الوصول'}
+                                </a>
                             </div>
-                            <button onClick={() => setIsChatOpen(false)}><X className="w-6 h-6 text-background/70 hover:text-background transition-colors" /></button>
-                        </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
-                        {/* Messages */}
-                        <div className="flex-1 p-5 overflow-y-auto flex flex-col gap-4 bg-[#F5F5F5] dark:bg-black/50">
-                            {messages.map((m, i) => (
-                                <div key={i} className={`max-w-[85%] p-4 text-sm leading-relaxed shadow-sm ${m.role === 'bot' ? 'bg-white dark:bg-[#1A1A1A] text-foreground self-start rounded-2xl rounded-tl-sm rtl:rounded-tr-sm rtl:rounded-tl-2xl border border-border' : 'bg-foreground text-background self-end rounded-2xl rounded-tr-sm rtl:rounded-tl-sm rtl:rounded-tr-2xl'}`}>
-                                    {m.content.split('\n').map((line, j) => <span key={j}>{line}<br /></span>)}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Input */}
-                        <div className="p-4 border-t border-border flex items-center gap-3 bg-background">
-                            <input
-                                type="text"
-                                value={inputVal}
-                                onChange={e => setInputVal(e.target.value)}
-                                onKeyDown={e => e.key === 'Enter' && handleSend()}
-                                placeholder={locale === 'he' ? 'הקלד/י כאן...' : 'اكتب هنا...'}
-                                className="flex-1 bg-muted p-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground"
-                            />
-                            <button onClick={handleSend} className="w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center shrink-0 hover:scale-105 transition-transform shadow-md">
-                                <Send className="w-4 h-4 -md:ml-0.5 rtl:ml-0 rtl:-mr-0.5 rtl:scale-x-[-1]" />
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <div className="flex items-center justify-end gap-3 w-full">
                 <button
                     onClick={() => { setA11yMenuOpen(!a11yMenuOpen); setIsChatOpen(false); }}
                     className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg hover:bg-blue-700 hover:scale-105 transition-all"
@@ -252,6 +203,57 @@ export function FloatingWidgets() {
                 >
                     <Accessibility className="w-5 h-5" />
                 </button>
+            </div>
+
+            {/* Chatbot Widget - Left side (end in RTL) */}
+            <div className="fixed bottom-6 end-6 z-50 flex flex-col gap-4 items-end">
+                <AnimatePresence>
+                    {isChatOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="bg-background border border-border shadow-2xl rounded-2xl w-[340px] md:w-[400px] h-[550px] mb-2 flex flex-col overflow-hidden origin-bottom-right"
+                        >
+                            {/* Header */}
+                            <div className="bg-foreground text-background p-5 flex justify-between items-center">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-background/20 flex items-center justify-center font-bold text-lg">L</div>
+                                    <div>
+                                        <h3 className="font-semibold leading-tight">{locale === 'he' ? 'לין - אסיסטנטית חכמה' : 'لين - مساعدة'}</h3>
+                                        <p className="text-xs opacity-70 mt-0.5">{locale === 'he' ? 'זמינה 24/7' : 'متاح 24/7'}</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setIsChatOpen(false)}><X className="w-6 h-6 text-background/70 hover:text-background transition-colors" /></button>
+                            </div>
+
+                            {/* Messages */}
+                            <div className="flex-1 p-5 overflow-y-auto flex flex-col gap-4 bg-[#F5F5F5] dark:bg-black/50">
+                                {messages.map((m, i) => (
+                                    <div key={i} className={`max-w-[85%] p-4 text-sm leading-relaxed shadow-sm ${m.role === 'bot' ? 'bg-white dark:bg-[#1A1A1A] text-foreground self-start rounded-2xl rounded-tl-sm rtl:rounded-tr-sm rtl:rounded-tl-2xl border border-border' : 'bg-foreground text-background self-end rounded-2xl rounded-tr-sm rtl:rounded-tl-sm rtl:rounded-tr-2xl'}`}>
+                                        {m.content.split('\n').map((line, j) => <span key={j}>{line}<br /></span>)}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Input */}
+                            <div className="p-4 border-t border-border flex items-center gap-3 bg-background">
+                                <input
+                                    type="text"
+                                    value={inputVal}
+                                    onChange={e => setInputVal(e.target.value)}
+                                    onKeyDown={e => e.key === 'Enter' && handleSend()}
+                                    placeholder={locale === 'he' ? 'הקלד/י כאן...' : 'اكتب هنا...'}
+                                    className="flex-1 bg-muted p-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-foreground"
+                                />
+                                <button onClick={handleSend} className="w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center shrink-0 hover:scale-105 transition-transform shadow-md">
+                                    <Send className="w-4 h-4 -md:ml-0.5 rtl:ml-0 rtl:-mr-0.5 rtl:scale-x-[-1]" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
                 <button
                     onClick={() => { setIsChatOpen(!isChatOpen); setA11yMenuOpen(false); }}
                     className="w-16 h-16 rounded-full bg-foreground text-background flex items-center justify-center shadow-2xl hover:scale-105 transition-transform"
@@ -260,7 +262,6 @@ export function FloatingWidgets() {
                     {isChatOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-7 h-7" />}
                 </button>
             </div>
-
-        </div>
+        </>
     );
 }
