@@ -42,7 +42,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[6.5rem] lg:text-[7.5rem] xl:text-[9rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right mt-auto md:mt-0 relative w-full z-40"
+                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right mt-auto md:mt-0 relative w-full z-40"
                         >
                             {/* Hebrew and Arabic ONLY, properly formatting to wrap the face on desktop, and stacking centrally on mobile */}
                             {locale === 'he' ? (
