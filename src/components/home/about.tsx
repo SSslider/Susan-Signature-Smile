@@ -96,7 +96,7 @@ export function About() {
                         >
                             <Image
                                 src="/images/dental_chair.png"
-                                alt="Luxury Dental Chair"
+                                alt="Luxury Modern Dental Chair at Susan Signature Smile Clinic in Haifa"
                                 fill
                                 className="object-cover object-center grayscale contrast-125"
                             />

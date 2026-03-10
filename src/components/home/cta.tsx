@@ -78,7 +78,7 @@ export function FinalCta() {
                         >
                             <Image
                                 src="/images/gloved_hand.png"
-                                alt="Medical Gloved Hand"
+                                alt="Dentist preparing for premium dental treatment at Susan Signature Smile"
                                 fill
                                 className="object-cover object-center mix-blend-multiply hover:scale-105 transition-transform duration-1000 ease-out grayscale contrast-[1.1]"
                             />

@@ -53,11 +53,11 @@ export function Cases() {
                             {/* Before/After Custom UI */}
                             <div className="w-full lg:w-1/2 aspect-video relative overflow-hidden group flex bg-black border border-white/10" dir="ltr">
                                 <div className="w-1/2 h-full border-r border-white/20 relative overflow-hidden flex items-center justify-center">
-                                    <Image src={`/images/case${item.id}_before.png`} alt="Before" fill className="object-cover opacity-80 mix-blend-screen grayscale contrast-125 focus:scale-105" />
+                                    <Image src={`/images/case${item.id}_before.png`} alt={`Dental treatment before - Case ${item.id}`} fill className="object-cover opacity-80 mix-blend-screen grayscale contrast-125 focus:scale-105" />
                                     <span className="text-white bg-black/50 px-2 py-1 uppercase tracking-widest text-[10px] font-medium absolute top-4 left-4 z-10 rounded">Before</span>
                                 </div>
                                 <div className="w-1/2 h-full relative overflow-hidden flex items-center justify-center">
-                                    <Image src={`/images/case${item.id}_after.png`} alt="After" fill className="object-cover mix-blend-screen grayscale contrast-125 focus:scale-105" />
+                                    <Image src={`/images/case${item.id}_after.png`} alt={`Dental treatment after - Case ${item.id}`} fill className="object-cover mix-blend-screen grayscale contrast-125 focus:scale-105" />
                                     <span className="text-white bg-black/50 px-2 py-1 uppercase tracking-widest text-[10px] font-medium absolute top-4 left-4 z-10 rounded">After</span>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@ export function Hero() {
             <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
                 <Image
                     src="/images/hero_portrait_v35.png"
-                    alt="Premium Dental Patient Portrait"
+                    alt="Beautiful portrait of a smiling woman for Susan Signature Smile Premium Dental Clinic"
                     fill
                     priority
                     className="object-cover object-center md:object-[center_top] opacity-100 mix-blend-screen grayscale contrast-[1.15] brightness-90"

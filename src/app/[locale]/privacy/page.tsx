@@ -64,6 +64,20 @@ const content = {
     }
 };
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const isHebrew = locale === 'he';
+
+    return {
+        title: isHebrew ? 'תנאי שימוש ופרטיות | Susan Signature Smile' : 'شروط الاستخدام والخصوصية | Susan Signature Smile',
+        description: isHebrew
+            ? 'קראו את תנאי השימוש ומדיניות הפרטיות של מרפאת סוסאן. אנו מחויבים להגנה על המידע האישי שלכם.'
+            : 'اقرأ شروط الاستخدام وسياسة الخصوصية لعيادة سوسان. نحن ملتزمون بحماية معلوماتك الشخصية.',
+    };
+}
+
 export default async function PrivacyPage({
     params,
 }: {

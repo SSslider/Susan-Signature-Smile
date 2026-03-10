@@ -50,6 +50,20 @@ const content = {
     }
 };
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const isHebrew = locale === 'he';
+
+    return {
+        title: isHebrew ? 'הצהרת נגישות | Susan Signature Smile' : 'بيان إمكانية الوصول | Susan Signature Smile',
+        description: isHebrew
+            ? 'הצהרת הנגישות של מרפאת הבוטיק Susan Signature Smile. אנו פועלים להנגשת השירותים שלנו בשקיפות לכלל הלקוחות.'
+            : 'بيان إمكانية الوصول لعيادة سوسان سيجنتشر سمايل. نحن نعمل على إتاحة خدماتنا بشفافية لجميع العملاء.',
+    };
+}
+
 export default async function AccessibilityPage({
     params,
 }: {

@@ -70,7 +70,7 @@ export function Diagnostic() {
                         >
                             <Image
                                 src="/images/diagnostic_machine.png"
-                                alt="Diagnostic Machine"
+                                alt="Advanced 3D Dental Diagnostic and CT Scanning Machine"
                                 fill
                                 className="object-cover object-center grayscale contrast-125 hover:scale-105 transition-transform duration-1000 ease-out"
                             />
