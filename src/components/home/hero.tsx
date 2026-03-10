@@ -15,7 +15,7 @@ export function Hero() {
             {/* Background Image Area - Image covers the entire section as requested */}
             <div className="absolute inset-0 z-0 bg-black flex items-center justify-center">
                 <Image
-                    src="/images/hero_portrait_v35.png"
+                    src="/images/hero_portrait_v36.png"
                     alt="Beautiful portrait of a smiling woman for Susan Signature Smile Premium Dental Clinic"
                     fill
                     priority
@@ -42,7 +42,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right mt-auto md:mt-0 relative w-full z-40"
+                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right md:w-1/2 md:mr-auto mt-auto md:mt-0 relative z-40"
                         >
                             {/* Hebrew and Arabic ONLY, properly formatting to wrap the face on desktop, and stacking centrally on mobile */}
                             {locale === 'he' ? (
@@ -65,7 +65,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className={`mt-6 md:mt-0 text-[11px] sm:text-xs md:text-sm font-light text-white/90 md:text-white/60 w-full max-w-[280px] md:max-w-[280px] leading-relaxed relative md:absolute ${locale === 'he' || locale === 'ar' ? 'mx-auto md:mx-0 md:left-4 lg:left-12 xl:left-24 text-center md:text-right' : 'mx-auto md:mx-0 md:right-4 lg:right-12 xl:right-24 text-center md:text-left'} md:top-[60%] lg:top-[55%] md:transform md:-translate-y-1/2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] z-40`}
+                            className={`mt-6 md:mt-0 text-[11px] sm:text-xs md:text-sm font-light text-white/90 md:text-white/60 w-full max-w-[280px] md:max-w-[320px] leading-relaxed relative md:absolute ${locale === 'he' || locale === 'ar' ? 'mx-auto md:mx-0 md:left-auto md:right-[50%] text-center rtl:md:text-right' : 'mx-auto md:mx-0 md:right-4 lg:right-12 xl:right-24 text-center md:text-left'} md:top-[60%] lg:top-[55%] md:transform md:-translate-y-1/2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] z-40`}
                             dir={locale === 'he' ? 'rtl' : locale === 'ar' ? 'rtl' : 'ltr'}
                         >
                             {locale === 'he'
