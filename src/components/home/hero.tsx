@@ -19,7 +19,7 @@ export function Hero() {
                     alt="Beautiful portrait of a smiling woman for Susan Signature Smile Premium Dental Clinic"
                     fill
                     priority
-                    className="object-cover object-center md:object-[center_top] opacity-100 mix-blend-screen grayscale contrast-[1.15] brightness-90"
+                    className="object-cover object-[75%_center] sm:object-right md:object-[center_top] opacity-100 mix-blend-screen grayscale contrast-[1.15] brightness-90"
                 />
                 {/* Subtle dark overlay for mobile to ensure text readability without casting half-shadows on her face */}
                 <div className="absolute inset-0 bg-black/40 sm:bg-black/20 pointer-events-none z-10" />
@@ -36,37 +36,40 @@ export function Hero() {
                         <span dir={locale === 'he' ? 'rtl' : locale === 'ar' ? 'rtl' : 'ltr'}>{locale === 'he' ? 'חיפה, ישראל' : 'حيفا، إسرائيل'}</span>
                     </div>
 
-                    {/* Main Content inside Box - Vertically Centered */}
-                    <div className="flex flex-col justify-center h-full w-full z-30 relative pt-20 md:pt-12 pb-28 md:pb-12 pointer-events-none">
+                    {/* Main Content inside Box - Absolute Free Positioning */}
+                    <div className="absolute inset-x-0 inset-y-0 w-full h-full z-30 pointer-events-none">
+
+                        {/* Large Text - Left Aligned to fall strictly into negative space */}
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="text-[14vw] leading-[1] sm:text-[14vw] md:text-[5rem] lg:text-[6rem] xl:text-[7.5rem] md:leading-[0.82] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col text-center rtl:md:text-right md:w-1/2 md:mr-auto mt-auto md:mt-0 relative z-40"
+                            className="absolute top-[18%] md:top-[38%] md:-translate-y-1/2 left-2 sm:left-4 md:left-10 lg:left-14 text-[9vw] leading-[0.95] sm:text-[10vw] md:text-[4rem] lg:text-[4.5rem] xl:text-[6rem] md:leading-[0.85] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col items-start z-40 drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)] w-[65vw] sm:w-[60vw] md:w-auto md:max-w-[48vw] lg:max-w-[48vw] xl:max-w-[50vw]"
+                            dir="ltr"
                         >
-                            {/* Hebrew and Arabic ONLY, properly formatting to wrap the face on desktop, and stacking centrally on mobile */}
+                            {/* RTL block encapsulated to respect text flow without breaking physical left alignment */}
                             {locale === 'he' ? (
-                                <span dir="rtl" className="flex flex-col items-center md:items-start w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] md:drop-shadow-2xl gap-2 md:gap-0">
-                                    <span className="pr-0 md:pr-0 md:whitespace-nowrap">כי החיוך שלך</span>
-                                    <span className="pr-0 md:pr-[22%] opacity-90 md:whitespace-nowrap">ראוי</span>
-                                    <span className="pr-0 md:pr-[5%] opacity-100 md:whitespace-nowrap">להכי טוב</span>
+                                <span dir="rtl" className="flex flex-col items-start text-right w-full">
+                                    <span className="pr-0 whitespace-nowrap">כי החיוך שלך</span>
+                                    <span className="pr-[30%] sm:pr-[25%] md:pr-[20%] opacity-90 whitespace-nowrap">ראוי</span>
+                                    <span className="pr-[5%] opacity-100 whitespace-nowrap">להכי טוב</span>
                                 </span>
                             ) : (
-                                <span dir="rtl" className="flex flex-col items-center md:items-start w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] md:drop-shadow-2xl gap-2 md:gap-0">
-                                    <span className="pr-0 md:pr-0 md:whitespace-nowrap">لأن ابتسامتك</span>
-                                    <span className="pr-0 md:pr-[22%] opacity-90 md:whitespace-nowrap">تستحق</span>
-                                    <span className="pr-0 md:pr-[5%] opacity-100 md:whitespace-nowrap">الأفضل</span>
+                                <span dir="rtl" className="flex flex-col items-start text-right w-full">
+                                    <span className="pr-0 whitespace-nowrap">لأن ابتسامتك</span>
+                                    <span className="pr-[30%] sm:pr-[25%] md:pr-[20%] opacity-90 whitespace-nowrap">تستحق</span>
+                                    <span className="pr-[5%] opacity-100 whitespace-nowrap">الأفضل</span>
                                 </span>
                             )}
                         </motion.h1>
 
-                        {/* Smaller paragraph - positioned naturally on mobile, absolute on desktop near the face */}
+                        {/* Smaller paragraph - Right Aligned overlaying the hair / opposite extreme side */}
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className={`mt-6 md:mt-0 text-[11px] sm:text-xs md:text-sm font-light text-white/90 md:text-white/60 w-full max-w-[280px] md:max-w-[320px] leading-relaxed relative md:absolute ${locale === 'he' || locale === 'ar' ? 'mx-auto md:mx-0 md:left-auto md:right-[50%] text-center rtl:md:text-right' : 'mx-auto md:mx-0 md:right-4 lg:right-12 xl:right-24 text-center md:text-left'} md:top-[60%] lg:top-[55%] md:transform md:-translate-y-1/2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] z-40`}
-                            dir={locale === 'he' ? 'rtl' : locale === 'ar' ? 'rtl' : 'ltr'}
+                            className="absolute bottom-[20%] md:bottom-auto md:top-[35%] lg:top-[35%] md:-translate-y-1/2 right-4 sm:right-6 md:right-8 lg:right-16 text-[10px] sm:text-[11px] md:text-sm font-light text-white/90 w-[45vw] sm:w-[50vw] md:w-[35%] max-w-[180px] md:max-w-[260px] leading-relaxed text-right drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] z-40"
+                            dir="rtl"
                         >
                             {locale === 'he'
                                 ? 'אנו מרפאת שיניים מודרנית, דיגיטלית וחדשנית. מתמקדים במתן טיפולים בטוחים ויעילים בטכנולוגיה החדישה ביותר.'
