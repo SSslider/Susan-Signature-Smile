@@ -68,7 +68,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className="absolute bottom-[40%] sm:bottom-[35%] md:bottom-auto md:top-[50%] lg:top-[55%] left-2 sm:left-4 md:left-10 lg:left-14 text-[9px] sm:text-[10px] md:text-sm font-light text-white/90 w-[50vw] sm:w-[45vw] md:w-[35%] max-w-[170px] md:max-w-[320px] leading-relaxed text-right rtl:md:text-right md:text-left drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] z-40"
+                            className="absolute bottom-[28%] sm:bottom-[25%] md:bottom-auto md:top-[68%] lg:top-[72%] left-6 sm:left-10 md:left-10 lg:left-14 text-[9px] sm:text-[10px] md:text-sm font-light text-white/90 w-[50vw] sm:w-[45vw] md:w-[35%] max-w-[170px] md:max-w-[320px] leading-relaxed text-right rtl:md:text-right md:text-left drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] z-40"
                             dir="rtl"
                         >
                             {locale === 'he'
