@@ -44,7 +44,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
-                            className="absolute top-[18%] md:top-[38%] md:-translate-y-1/2 left-2 sm:left-4 md:left-10 lg:left-14 text-[9vw] leading-[0.95] sm:text-[10vw] md:text-[4rem] lg:text-[4.5rem] xl:text-[6rem] md:leading-[0.85] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col items-start z-40 drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)] w-[65vw] sm:w-[60vw] md:w-auto md:max-w-[48vw] lg:max-w-[48vw] xl:max-w-[50vw]"
+                            className="absolute top-[18%] md:top-[35%] md:-translate-y-1/2 -left-4 sm:left-2 md:left-10 lg:left-14 text-[9vw] leading-[0.95] sm:text-[10vw] md:text-[4rem] lg:text-[4.5rem] xl:text-[6rem] md:leading-[0.85] font-bold tracking-tight md:tracking-[-0.04em] text-white flex flex-col items-start z-40 drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)] w-[55vw] sm:w-[50vw] md:w-auto md:max-w-[48vw] lg:max-w-[48vw] xl:max-w-[50vw]"
                             dir="ltr"
                         >
                             {/* RTL block encapsulated to respect text flow without breaking physical left alignment */}
@@ -68,7 +68,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                            className="absolute bottom-[20%] md:bottom-auto md:top-[35%] lg:top-[35%] md:-translate-y-1/2 right-4 sm:right-6 md:right-8 lg:right-16 text-[10px] sm:text-[11px] md:text-sm font-light text-white/90 w-[45vw] sm:w-[50vw] md:w-[35%] max-w-[180px] md:max-w-[260px] leading-relaxed text-right drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] z-40"
+                            className="absolute bottom-[40%] sm:bottom-[35%] md:bottom-auto md:top-[50%] lg:top-[55%] left-2 sm:left-4 md:left-10 lg:left-14 text-[9px] sm:text-[10px] md:text-sm font-light text-white/90 w-[50vw] sm:w-[45vw] md:w-[35%] max-w-[170px] md:max-w-[320px] leading-relaxed text-right rtl:md:text-right md:text-left drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] z-40"
                             dir="rtl"
                         >
                             {locale === 'he'
